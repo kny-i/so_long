@@ -1,10 +1,8 @@
 #include "../minilibx-linux/mlx.h"
 
-int	main(void)
+int	main(int arg, char **argv)
 {
-	void	*mlx;
-
-	mlx = mlx_init();
-	mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	if (argc != 2)
+		put_error("invalid argument");
+	ini
 }

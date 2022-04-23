@@ -18,7 +18,7 @@ all:			$(NAME)
 
 $(NAME):		$(MLX_PATH) $(SRCS_OBJS)
 				$(MLXMAKE)
-				$(CC) $(CFLAGS) $(SRCS_OBJS)  $(MLXFLAG) $(MLX_PATH)/libmlx.dylib -lm -o $(NAME)
+				$(CC) $(CFLAGS) $(SRCS_OBJS)  $(MLXFLAG) $(MLX_PATH)/libmlx_Darwin.a -o $(NAME)
 
 mlx:
 				$(MLXMAKE)
