@@ -37,7 +37,7 @@ typedef struct cnt_s
 typedef	struct pos_s
 {
 	int 	x;
-	int 	y;m
+	int 	y;
 }				t_pos;
 
 typedef struct data_s
@@ -51,4 +51,4 @@ typedef struct data_s
 	t_img	img;
 	t_pos	pos;
 	int 	count;
-} t_data;
+}			t_data;
