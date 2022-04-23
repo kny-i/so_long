@@ -52,3 +52,5 @@ typedef struct data_s
 	t_pos	pos;
 	int 	count;
 }			t_data;
+
+void	put_error(char *message);
