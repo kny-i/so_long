@@ -44,7 +44,26 @@ void	ft_free_map(t_data *data)
 
 void	ft_count_contents(t_data data)
 {
+	int 	i;
+	int 	k;
 
+	i = 0;
+	k = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][k])
+		{
+			if (data->map[i][k] == data->content->collect)
+				data->content->count_c += 1;
+			if (data->map[i][k] == data->content->player)
+				data->content->count_p += 1;
+			if (data->map[i][k] == data->content->exit)
+				data->content->count_e += 1;
+			y++;
+		}
+		y = 0;
+		i++
+	}
 }
 
 char	**parse_map(int fd, t_data *data)
