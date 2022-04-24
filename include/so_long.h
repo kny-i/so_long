@@ -44,7 +44,7 @@ typedef	struct pos_s
 typedef struct data_s
 {
 	void	*mlx_ptr;
-	void	*mls_win;
+	void	*mlx_win;
 	int 	width;
 	int		height;
 	char	**map;
@@ -55,6 +55,14 @@ typedef struct data_s
 }			t_data;
 
 void	put_error(char *message);
-char 	**read_map(char **str, t_data *data)
-
+char 	**read_map(char **str, t_data *data);
+void	terminate_mlx(t_data *data);
+void	data_init(t_cnt *content);
+void	ft_free_map(t_data *data);
+void	ft_count_contents(t_data *data);
+char	**parse_map(int fd, t_data *data);
+char 	**read_map(char **str, t_data *data);
+char 	*get_map_data(int fd);
+void 	ft_error(char *message);
+int		ft_strnrcmp(char *str, char *cmp);
 #endif

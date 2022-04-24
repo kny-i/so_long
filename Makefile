@@ -29,8 +29,7 @@ $(NAME):		$(MLX_PATH) $(SRCS_OBJS)
 mlx:
 				$(MLXMAKE)
 
-.c.o:
-				$(CC) $(CFLAGS) -I -c $< -o $@
+
 
 clean:
 				$(MLXMAKE) clean

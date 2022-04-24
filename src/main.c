@@ -24,12 +24,12 @@ void	terminate_mlx(t_data *data)
 			i++;
 		}
 		free(data->map);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_wall);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_floor);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_correct);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_player);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_exit);
-		mlx_destroy_image(data->mlx_ptr, data->img->img_win);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_wall);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_floor);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_correct);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_player);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_exit);
+		mlx_destroy_image(data->mlx_ptr, data->mlx_win);
 	}
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
@@ -38,24 +38,24 @@ void	terminate_mlx(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_data	data;
 	int		i;
 	int 	k;
 
 	if (argc != 2)
 		put_error("invalid argument");
-	data->count = 0;
-	data->mlx_ptr = mlx_init();
-	data_init(data->content);
-	data->map = read_map(argv, data);
+	data.count = 0;
+	data.mlx_ptr = mlx_init();
+	data_init(&data.content);
+	data.map = read_map(argv, &data);
 
 	i = 0;
 	k = 0;
-	while(data->map[i])
+	while(data.map[i])
 	{
-		while (data->map[i][k])
+		while (data.map[i][k])
 		{
-			printf("%c\n", data->map[i][k]);
+			printf("%c\n", data.map[i][k]);
 			k++;
 		}
 		k = 0;

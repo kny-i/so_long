@@ -39,10 +39,10 @@ void	ft_free_map(t_data *data)
 		i++;
 	}
 	free(data->map);
-	return(0);
+	return ;
 }
 
-void	ft_count_contents(t_data data)
+void	ft_count_contents(t_data *data)
 {
 	int 	i;
 	int 	k;
@@ -53,43 +53,40 @@ void	ft_count_contents(t_data data)
 	{
 		while (data->map[i][k])
 		{
-			if (data->map[i][k] == data->content->collect)
-				data->content->count_c += 1;
-			if (data->map[i][k] == data->content->player)
-				data->content->count_p += 1;
-			if (data->map[i][k] == data->content->exit)
-				data->content->count_e += 1;
-			y++;
+			if (data->map[i][k] == data->content.collect)
+				data->content.count_c += 1;
+			if (data->map[i][k] == data->content.player)
+				data->content.count_p += 1;
+			if (data->map[i][k] == data->content.exit)
+				data->content.count_e += 1;
+			k++;
 		}
-		y = 0;
-		i++
+		k = 0;
+		i++;
 	}
 }
 
 char	**parse_map(int fd, t_data *data)
 {
-	int 	i;
-
-	i = 1;
 	data->map = ft_split(get_map_data(fd), '\n');
 	ft_count_contents(data);
 	return (data->map);
 }
 
-char **read_map(char **str, t_data *data)
+char **read_map(char **argv, t_data *data)
 {
 	int 	fd;
 
 	fd = 0;
 	data->map = NULL;
-	if (ft_strchr([1], ".ber") == 0)
+	if (ft_strnrcmp(argv[1], ".ber") == 0)
 	{
 		ft_error("invalid file_name");
 		return (NULL);
 	}
 	else
 	{
-		fd = open(str[1], O_RDONLY);
+		fd = open(argv[1], O_RDONLY);
 		if (fd > 0)
 			data->map = parse_map(fd, data);
 		else
@@ -97,8 +94,8 @@ char **read_map(char **str, t_data *data)
 			ft_error("something wrong with fd");
 			return(NULL);
 		}
-		if ((data->content.count_p != 1 || data->content->count_c == 0 \
-					|| data->content->count_e != 1 ))
+		if ((data->content.count_p != 1 || data->content.count_c == 0 \
+					|| data->content.count_e != 1 ))
 		{
 			ft_free_map(data);
 			ft_error("not enough player, object or exit");
