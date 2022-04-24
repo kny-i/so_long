@@ -3,8 +3,8 @@
 
 #include "../minilibx-linux/mlx.h"
 
-#include "./get_next_line/get_next_line.h"
-#include "./libft/libft.h"
+#include "../get_next_line/get_next_line.h"
+#include "../libft/libft.h"
 #include <libc.h>
 
 typedef struct img_s
@@ -21,7 +21,7 @@ typedef struct img_s
 	char	*wall;
 	char	*collect;
 	char 	*exit;
-}t_info;
+}t_img;
 
 typedef struct cnt_s
 {
@@ -55,3 +55,6 @@ typedef struct data_s
 }			t_data;
 
 void	put_error(char *message);
+char 	**read_map(char **str, t_data *data)
+
+#endif

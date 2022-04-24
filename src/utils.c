@@ -6,8 +6,9 @@ void	put_error(char *message)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_error(char *message)
+void ft_error(char *message)
 {
 	ft_putendl_fd(message, STDERR_FILLLENO);
 	return (0);
 }
+
