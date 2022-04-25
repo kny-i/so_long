@@ -5,25 +5,26 @@ char *get_map_data(int fd)
 	char 	*line_map;
 	char 	*buff;
 	char 	*tmp_buff;
+	int		count_line;
 
-	line_map = ft_strdup("");
+	line_map = strdup("");
+	count_line = get_next_line_count(fd, &line_map);
 	buff = ft_strdup("");
-	line_map = get_next_line(fd);
-	if (ft_strlen(line_map) != 0)
+	tmp_buff = buff;
+	if (count_line > 0)
 	{
-		tmp_buff = buff;
-		while(ft_strlen(line_map) != 0)
+		while(count_line > 0)
 		{
-			buff = ft_strjoin(buff, line_map);
+			buff = ft_strjoin(tmp_buff, line_map);
+			printf("__test__01\n");
 			free(tmp_buff);
 			free(line_map);
 			line_map = ft_strdup("");
-			line_map = get_next_line(fd);
+			count_line = get_next_line_count(fd, &line_map);
 			tmp_buff = buff;
 		}
 		return (buff);
 	}
-
 	ft_error("internal map error");
 	return(NULL);
 }
@@ -88,7 +89,9 @@ char **read_map(char **argv, t_data *data)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd > 0)
+		{
 			data->map = parse_map(fd, data);
+		}
 		else
 		{
 			ft_error("something wrong with fd");

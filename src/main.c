@@ -48,7 +48,6 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	data_init(&data.content);
 	data.map = read_map(argv, &data);
-
 	i = 0;
 	k = 0;
 	while(data.map[i])
@@ -61,9 +60,9 @@ int	main(int argc, char **argv)
 		k = 0;
 		i++;
 	}
-	/*if (data->map == NULL)
-		terminate_mlx(data);
-	else
+	if (data.map == NULL)
+		terminate_mlx(&data);
+/*	else
 	{
 		set_img(data);
 		render_map(data);

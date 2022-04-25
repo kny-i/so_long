@@ -21,7 +21,7 @@ LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)
 all:			$(NAME)
 
 
-$(NAME):		$(MLX_PATH) $(SRCS_OBJS)
+$(NAME):		$(MLX_PATH) $(SRCS_OBJS) $(GNL_OBJS)
 				$(MLXMAKE)
 				$(LIBFTMAKE)
 				$(CC) $(CFLAGS) $(SRCS_OBJS) $(GNL_OBJS) $(MLXFLAG) $(MLX_PATH)/libmlx_Darwin.a $(LIBFT_PATH)/libft.a -o $(NAME)

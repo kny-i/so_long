@@ -65,4 +65,6 @@ char 	**read_map(char **str, t_data *data);
 char 	*get_map_data(int fd);
 void 	ft_error(char *message);
 int		ft_strnrcmp(char *str, char *cmp);
+int 	get_next_line_count(int fd, char **str);
+int	gnl(int fd, char **str);
 #endif
