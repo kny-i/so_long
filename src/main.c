@@ -56,6 +56,9 @@ int	main(int argc, char **argv)
 		{
 			printf("%c\n", data.map[i][k]);
 			k++;
+			printf("k = [%d]\n", k);
+			printf("i = [%d]\n", i);
+
 		}
 		k = 0;
 		i++;

@@ -8,19 +8,19 @@ char *get_map_data(int fd)
 	int		count_line;
 
 	line_map = strdup("");
-	count_line = get_next_line_count(fd, &line_map);
-	buff = ft_strdup("");
+	line_map = get_next_line(fd);
+	count_line = ft_strlen(line_map);
+	buff = strdup("");
 	tmp_buff = buff;
 	if (count_line > 0)
 	{
 		while(count_line > 0)
 		{
 			buff = ft_strjoin(tmp_buff, line_map);
-			printf("__test__01\n");
 			free(tmp_buff);
 			free(line_map);
-			line_map = ft_strdup("");
-			count_line = get_next_line_count(fd, &line_map);
+			line_map = get_next_line(fd);
+			count_line = ft_strlen(line_map);
 			tmp_buff = buff;
 		}
 		return (buff);

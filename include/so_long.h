@@ -67,4 +67,5 @@ void 	ft_error(char *message);
 int		ft_strnrcmp(char *str, char *cmp);
 int 	get_next_line_count(int fd, char **str);
 int	gnl(int fd, char **str);
+
 #endif
