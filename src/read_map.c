@@ -7,7 +7,6 @@ char *get_map_data(int fd)
 	char 	*tmp_buff;
 	int		count_line;
 
-	line_map = strdup("");
 	line_map = get_next_line(fd);
 	count_line = ft_strlen(line_map);
 	buff = strdup("");
@@ -67,10 +66,30 @@ void	ft_count_contents(t_data *data)
 	}
 }
 
+void	ft_count_line(t_data *data)
+{
+	int 	y;
+	int 	x;
+
+	x = 0;
+	y = 0;
+	while (data->map[y] != NULL)
+	{
+		while (data->map[y][x] != '\0')
+			x++;
+		y++;
+	}
+	data->width = x;
+	data->height = y;
+}
+
 char	**parse_map(int fd, t_data *data)
 {
 	data->map = ft_split(get_map_data(fd), '\n');
 	ft_count_contents(data);
+	/*if (!(ft_check_line(data->map[0], data->content.wall)))
+		return (ft_free_map(data));*/
+	ft_count_line(data);
 	return (data->map);
 }
 
@@ -78,7 +97,6 @@ char **read_map(char **argv, t_data *data)
 {
 	int 	fd;
 
-	fd = 0;
 	data->map = NULL;
 	if (ft_strnrcmp(argv[1], ".ber") == 0)
 	{

@@ -14,10 +14,10 @@ typedef struct img_s
 	void	*img_floor;
 	void	*img_player;
 	void	*img_wall;
-	void	*img_correct;
+	void	*img_collect;
 	void	*img_exit;
 	char	*player;
-	char	*foor;
+	char	*floor;
 	char	*wall;
 	char	*collect;
 	char 	*exit;
@@ -56,7 +56,7 @@ typedef struct data_s
 
 void	put_error(char *message);
 char 	**read_map(char **str, t_data *data);
-void	terminate_mlx(t_data *data);
+int		terminate_mlx(t_data *data);
 void	data_init(t_cnt *content);
 void	ft_free_map(t_data *data);
 void	ft_count_contents(t_data *data);
@@ -66,6 +66,12 @@ char 	*get_map_data(int fd);
 void 	ft_error(char *message);
 int		ft_strnrcmp(char *str, char *cmp);
 int 	get_next_line_count(int fd, char **str);
-int	gnl(int fd, char **str);
-
+void	init_render(t_data *data);
+void	render_other(t_data *data);
+void	render_background(t_data *data);
+int		key_press(int key_data, t_data *data);
+void	render_down(t_data *data);
+void	render_left(t_data *data);
+void	render_right(t_data *data);
+void	render_up(t_data *data);
 #endif

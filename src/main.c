@@ -11,7 +11,7 @@ void	data_init(t_cnt *content)
 	content->count_c = 0;
 }
 
-void	terminate_mlx(t_data *data)
+int	terminate_mlx(t_data *data)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ void	terminate_mlx(t_data *data)
 		free(data->map);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_wall);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_floor);
-		mlx_destroy_image(data->mlx_ptr, data->img.img_correct);
+		mlx_destroy_image(data->mlx_ptr, data->img.img_collect);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_player);
 		mlx_destroy_image(data->mlx_ptr, data->img.img_exit);
 		mlx_destroy_image(data->mlx_ptr, data->mlx_win);
@@ -36,11 +36,33 @@ void	terminate_mlx(t_data *data)
 	exit(0);
 }
 
+void	set_img(t_data *data)
+{
+	data->img.height = 80;
+	data->img.width = 80;
+	data->img.floor = "./rsrc/floor_texture.xpm";
+	data->img.wall = "./rsrc/wall_texture.xpm";
+	data->img.collect = "./rsrc/collect.xpm";
+	data->img.player = "./rsrc/mario_player.xpm";
+	data->img.exit = "./rsrc/exit_texture.xpm";
+	data->img.img_wall = mlx_xpm_file_to_image(data->mlx_ptr, data->img.wall,
+											   &(data->img.width), &(data->img.height));
+	data->img.img_floor = mlx_xpm_file_to_image(data->mlx_ptr, data->img.floor,
+												&(data->img.width), &(data->img.height));
+	data->img.img_exit = mlx_xpm_file_to_image(data->mlx_ptr, data->img.exit,
+											   &(data->img.width), &(data->img.height));
+	data->img.img_collect = mlx_xpm_file_to_image(data->mlx_ptr,
+												  data->img.collect, &(data->img.width), &(data->img.height));
+	data->img.img_player = mlx_xpm_file_to_image(data->mlx_ptr,
+												 data->img.player, &(data->img.width), &(data->img.height));
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int		i;
-	int 	k;
+/*	int		i;
+	int 	k;*/
 
 	if (argc != 2)
 		put_error("invalid argument");
@@ -48,9 +70,9 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	data_init(&data.content);
 	data.map = read_map(argv, &data);
-	i = 0;
-	k = 0;
-	while(data.map[i])
+	/*i = 0;
+	k = 0;*/
+/*	while(data.map[i])
 	{
 		while (data.map[i][k])
 		{
@@ -62,13 +84,13 @@ int	main(int argc, char **argv)
 		}
 		k = 0;
 		i++;
-	}
+	}*/
 	if (data.map == NULL)
 		terminate_mlx(&data);
-/*	else
+	else
 	{
-		set_img(data);
-		render_map(data);
-	}*/
+		set_img(&data);
+		init_render(&data);
+	}
 	return (0);
 }
