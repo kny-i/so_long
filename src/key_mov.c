@@ -134,22 +134,3 @@ void	render_down(t_data *data)
 		}
 	}
 }
-
-
-
-
-
-int	key_press(int key_data, t_data *data)
-{
-	if (key_data == XK_EScape)
-		terminate_mlx(data);
-	if (key_data == XK_w)
-		render_up(data);
-	if (key_data == XK_d)
-		render_right(data);
-	if (key_data == XK_a)
-		render_left(data);
-	if (key_data == XK_s)
-		render_down(data);
-	return (0);
-}
