@@ -14,7 +14,6 @@ char *get_map_data(int fd)
 		while(line_map != NULL)
 		{
 			buff = ft_strjoin(tmp_buff, line_map);
-			//free(tmp_buff);
 			free(line_map);
 			line_map = get_next_line(fd);
 			tmp_buff = buff;
@@ -22,36 +21,9 @@ char *get_map_data(int fd)
 		free(line_map);
 		return (buff);
 	}
-	ft_error("internal map error");
-	return(NULL);
+	put_error("Error\ninternal map error\n");
+	return (NULL);
 }
-
-/*char **get_map_data(int fd)
-{
-	char 	*line_map;
-	char 	**ret;
-	int 	i;
-
-	i = 0;
-	line_map = get_next_line(fd);
-	while (line_map != NULL)
-	{
-		free(line_map);
-		line_map = get_next_line(fd);
-		i++;
-	}
-	ret = (char **)malloc(sizeof (char **) * (i + 1));
-	i = 0;
-	line_map = get_next_line(fd);
-	while (line_map != NULL)
-	{
-		ret[i] = line_map;
-		free(line_map);
-		line_map = get_next_line(fd);
-		i++;
-	}
-	return(ret);
-}*/
 
 void	*ft_free_map(t_data *data)
 {
@@ -130,27 +102,19 @@ char **read_map(char **argv, t_data *data)
 
 	data->map = NULL;
 	if (ft_strnrcmp(argv[1], ".ber") == 0)
-	{
-		ft_error("invalid file_name");
-		return (NULL);
-	}
+		put_error("Error\ninvalid file_name\n");
 	else
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd > 0)
-		{
 			data->map = parse_map(fd, data);
-		}
 		else
-		{
-			ft_error("something wrong with fd");
-			return(NULL);
-		}
+			put_error("Error\nsomething wrong with fd\n");
 		if ((data->content.count_p != 1 || data->content.count_c == 0 \
 					|| data->content.count_e != 1 ))
 		{
 			ft_free_map(data);
-			ft_error("not enough player, object or exit");
+			put_error("Error\nnot enough player, object or exit\n");
 			return (NULL);
 		}
 	}

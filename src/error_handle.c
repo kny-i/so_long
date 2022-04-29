@@ -16,10 +16,7 @@ int 	ft_check_format(t_data *data)
 		while (data->map[y][x] != '\0')
 			x++;
 		if (x != count_x)
-		{
-			ft_error("Map must be a rectangle or a square\n");
-			return (0);
-		}
+			put_error("Error\nMap must be a rectangle or a square\n");
 		x = 0;
 		y++;
 	}
@@ -39,10 +36,8 @@ int	ft_check_col(t_data *data)
 		{
 			if (y != 0 || y != data->height)
 			{
-				if (data->map[y][0] != data->content.wall || data->map[y][x - 1] != data->content.wall) {
-					ft_error("Error\nMap column not close\n");
-					return (0);
-				}
+				if (data->map[y][0] != data->content.wall || data->map[y][x - 1] != data->content.wall)
+					put_error("Error\nMap column not close\n");
 			}
 			x++;
 		}
@@ -63,17 +58,11 @@ int 	ft_check_other(t_data *data)
 		while (data->map[y][x] != '\0')
 		{
 			if (data->content.count_e > 1 || data->content.count_p > 1)
-			{
-				ft_error("Error\nWrong number of player or exit\n");
-				return (0);
-			}
+				put_error("Error\nWrong number of player or exit\n");
 			if (data->map[y][x] != data->content.wall && data->map[y][x] != data->content.player
 				&& data->map[y][x] != data->content.exit && data->map[y][x] != data->content.collect
 				&& data->map[y][x] != data->content.space)
-			{
-				ft_error("Error\nUnknown symbol(s) in map\n");
-				return (0);
-			}
+				put_error("Error\nUnknown symbol(s) in map\n");
 			x++;
 		}
 		y++;
@@ -91,22 +80,15 @@ int ft_check_line(t_data *data)
 	while (data->map[y][x] != '\0')
 	{
 		if (data->map[y][x] != data->content.wall)
-		{
-			ft_error("Map line doesn't close");
-			return (0);
-		}
+			put_error("Error\nMap line doesn't close\n");
 		x++;
 	}
 	y = data->height;
 	while (data->map[y][x] != '\0')
 	{
 		if (data->map[y][x] != data->content.wall)
-		{
-			ft_error("Map line doesn't close");
-			return (0);
-		}
+			put_error("Error\nMap line doesn't close\n");
 		x++;
 	}
 	return (1);
 }
-

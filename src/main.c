@@ -57,11 +57,6 @@ void	set_img(t_data *data)
 												 data->img.player, &(data->img.width), &(data->img.height));
 }
 
-__attribute__((destructor))
-static void destructor() {
-	system("leaks -q so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -70,20 +65,14 @@ int	main(int argc, char **argv)
 		put_error("invalid argument");
 	data.count = 0;
 	data.mlx_ptr = mlx_init();
-	printf("__test__0\n");
 	data_init(&data.content);
-	printf("__test__01\n");
 	data.map = read_map(argv, &data);
-	printf("__test__02\n");
 	if (data.map == NULL)
 		terminate_mlx(&data);
 	else
 	{
-		printf("__test__04\n");
 		set_img(&data);
-		printf("__test__03\n");
 		init_render(&data);
-		printf("__test__05\n");
 	}
 	return (0);
 }
