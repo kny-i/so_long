@@ -7,7 +7,7 @@ MLX_PATH		= 	./minilibx-linux/
 LIBFT_PATH		= 	./libft/
 GNL_PATH		=   ./get_next_line/
 
-SRCS_FILES		= 	main.c read_map.c utils.c render.c init.c key_mov.c
+SRCS_FILES		= 	main.c read_map.c utils.c render.c init.c key_mov.c error_handle.c
 GNL_FILES		= 	get_next_line.c get_next_line_utils.c
 
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_FILES))
@@ -38,6 +38,7 @@ clean:
 				$(RM) $(GNL_OBJS)
 
 fclean:			clean
+				$(RM) ./so_long
 				$(RM) $(MLX_PATH)/libmlx_Darwin.a
 				$(LIBFTMAKE) fclean
 				$(RM) $(NAME)

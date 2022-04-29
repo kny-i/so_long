@@ -61,8 +61,6 @@ void	set_img(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-/*	int		i;
-	int 	k;*/
 
 	if (argc != 2)
 		put_error("invalid argument");
@@ -70,21 +68,6 @@ int	main(int argc, char **argv)
 	data.mlx_ptr = mlx_init();
 	data_init(&data.content);
 	data.map = read_map(argv, &data);
-	/*i = 0;
-	k = 0;*/
-/*	while(data.map[i])
-	{
-		while (data.map[i][k])
-		{
-			printf("%c\n", data.map[i][k]);
-			k++;
-			printf("k = [%d]\n", k);
-			printf("i = [%d]\n", i);
-
-		}
-		k = 0;
-		i++;
-	}*/
 	if (data.map == NULL)
 		terminate_mlx(&data);
 	else

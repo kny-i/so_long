@@ -7,8 +7,7 @@
 #include "../libft/libft.h"
 #include <libc.h>
 #include <X11/keysym.h>
-#include <X11/X.h>
-# include <fcntl.h>
+
 
 typedef struct img_s
 {

@@ -44,29 +44,16 @@ void	render_other(t_data *data)
 	{
 		while (data->map[y][i] != '\0')
 		{
-			printf("[%c]\n", data->map[y][i]);
-			printf("i = [%d]\n", i);
-			printf("y = [%d]\n", y);
 			if (data->map[y][i] == data->content.collect)
-			{
-				printf("[%c]\n", data->content.collect);
-				printf("k = [%d]\n", y);
 				print_img(data, data->img.img_collect, i, y);
-				printf("__test__100\n");
-			}
 			else if (data->map[y][i] == data->content.player)
 			{
-				printf("__test__99\n");
 				data->pos.x = i * data->img.width;
 				data->pos.y = y * data->img.height;
 				print_img(data, data->img.img_player, i, y);
 			}
 			else if (data->map[y][i] == data->content.exit)
-			{
-				printf("__test__300\n");
 				print_img(data, data->img.img_exit, i, y);
-
-			}
 			i++;
 		}
 		i = 0;
@@ -83,15 +70,15 @@ int	render_map(t_data *data)
 
 int	key_press(int key_data, t_data *data)
 {
-	/*if (key_data == XK_EScape)
-		terminate_mlx(data);*/
-	if (key_data == XK_w)
+	if (key_data == 65307)
+		terminate_mlx(data);
+	if (key_data == 'w')
 		render_up(data);
-	if (key_data == XK_d)
+	if (key_data == 'd')
 		render_right(data);
-	if (key_data == XK_a)
+	if (key_data == 'a')
 		render_left(data);
-	if (key_data == XK_s)
+	if (key_data == 's')
 		render_down(data);
 	return (0);
 }

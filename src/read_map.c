@@ -87,8 +87,9 @@ char	**parse_map(int fd, t_data *data)
 {
 	data->map = ft_split(get_map_data(fd), '\n');
 	ft_count_contents(data);
-	/*if (!(ft_check_line(data->map[0], data->content.wall)))
-		return (ft_free_map(data));*/
+	if (ft_check_format(data->map) == 0)
+		return(ft_free_map(data));
+
 	ft_count_line(data);
 	return (data->map);
 }
