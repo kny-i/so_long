@@ -43,8 +43,7 @@ void	render_up(t_data *data)
 		{
 			if (chk_collect(data) == 0)
 			{
-				printf("Felicitation vous avez gagne en : %d coup !\n",
-					   data->count);
+				printf("congrats !!\n");
 				terminate_mlx(data);
 			}
 		}
@@ -71,8 +70,7 @@ void	render_right(t_data *data)
 		{
 			if (chk_collect(data) == 0)
 			{
-				printf("Felicitation vous avez gagne en : %d coup !\n",
-					   data->count);
+				printf("congrats !!\n");
 				terminate_mlx(data);
 			}
 		}
@@ -99,8 +97,7 @@ void	render_left(t_data *data)
 		{
 			if (chk_collect(data) == 0)
 			{
-				printf("Felicitation vous avez gagne en : %d coup !\n",
-					   data->count);
+				printf("congrats !!\n");
 				terminate_mlx(data);
 			}
 		}
@@ -127,8 +124,7 @@ void	render_down(t_data *data)
 		{
 			if (chk_collect(data) == 0)
 			{
-				printf("Felicitation vous avez gagne en : %d coup !\n",
-					   data->count);
+				printf("congrats !!\n");
 				terminate_mlx(data);
 			}
 		}

@@ -60,7 +60,7 @@ void	put_error(char *message);
 char 	**read_map(char **str, t_data *data);
 int		terminate_mlx(t_data *data);
 void	data_init(t_cnt *content);
-void	ft_free_map(t_data *data);
+void	*ft_free_map(t_data *data);
 void	ft_count_contents(t_data *data);
 char	**parse_map(int fd, t_data *data);
 char 	**read_map(char **str, t_data *data);
@@ -76,4 +76,9 @@ void	render_down(t_data *data);
 void	render_left(t_data *data);
 void	render_right(t_data *data);
 void	render_up(t_data *data);
+int 	ft_check_format(t_data *data);
+int		ft_check_line(t_data *data);
+int		ft_check_col(t_data *data);
+int 	ft_check_other(t_data *data);
+
 #endif

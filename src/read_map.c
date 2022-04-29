@@ -5,30 +5,55 @@ char *get_map_data(int fd)
 	char 	*line_map;
 	char 	*buff;
 	char 	*tmp_buff;
-	int		count_line;
 
 	line_map = get_next_line(fd);
-	count_line = ft_strlen(line_map);
 	buff = strdup("");
 	tmp_buff = buff;
-	if (count_line > 0)
+	if (line_map != NULL)
 	{
-		while(count_line > 0)
+		while(line_map != NULL)
 		{
 			buff = ft_strjoin(tmp_buff, line_map);
-			free(tmp_buff);
+			//free(tmp_buff);
 			free(line_map);
 			line_map = get_next_line(fd);
-			count_line = ft_strlen(line_map);
 			tmp_buff = buff;
 		}
+		free(line_map);
 		return (buff);
 	}
 	ft_error("internal map error");
 	return(NULL);
 }
 
-void	ft_free_map(t_data *data)
+/*char **get_map_data(int fd)
+{
+	char 	*line_map;
+	char 	**ret;
+	int 	i;
+
+	i = 0;
+	line_map = get_next_line(fd);
+	while (line_map != NULL)
+	{
+		free(line_map);
+		line_map = get_next_line(fd);
+		i++;
+	}
+	ret = (char **)malloc(sizeof (char **) * (i + 1));
+	i = 0;
+	line_map = get_next_line(fd);
+	while (line_map != NULL)
+	{
+		ret[i] = line_map;
+		free(line_map);
+		line_map = get_next_line(fd);
+		i++;
+	}
+	return(ret);
+}*/
+
+void	*ft_free_map(t_data *data)
 {
 	int 	i;
 
@@ -39,7 +64,7 @@ void	ft_free_map(t_data *data)
 		i++;
 	}
 	free(data->map);
-	return ;
+	return (NULL);
 }
 
 void	ft_count_contents(t_data *data)
@@ -87,9 +112,14 @@ char	**parse_map(int fd, t_data *data)
 {
 	data->map = ft_split(get_map_data(fd), '\n');
 	ft_count_contents(data);
-	if (ft_check_format(data->map) == 0)
+	if (ft_check_format(data) == 0)
 		return(ft_free_map(data));
-
+	else if (ft_check_line(data) == 0)
+		return(ft_free_map(data));
+	else if (ft_check_col(data) == 0)
+		return (ft_free_map(data));
+	else if (ft_check_other(data) == 0)
+		return (ft_free_map(data));
 	ft_count_line(data);
 	return (data->map);
 }

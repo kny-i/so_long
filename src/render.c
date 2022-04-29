@@ -100,5 +100,5 @@ void	init_render(t_data *data)
 	mlx_hook(data->mlx_win, 03, 1L<<1, &key_press, data);
 	mlx_hook(data->mlx_win, 17, 0, &terminate_mlx, data);
 	mlx_loop(data->mlx_ptr);
-	terminate_mlx(data);
+	//terminate_mlx(data);
 }
