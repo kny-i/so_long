@@ -7,7 +7,7 @@ MLX_PATH		= 	./minilibx-linux/
 LIBFT_PATH		= 	./libft/
 GNL_PATH		=   ./get_next_line/
 
-SRCS_FILES		= 	main.c read_map.c utils.c render.c init.c key_mov.c error_handle.c
+SRCS_FILES		= 	main.c read_map.c utils.c render.c key_mov.c error_handle.c
 GNL_FILES		= 	get_next_line.c get_next_line_utils.c
 
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_FILES))

@@ -13,6 +13,8 @@ char	*get_map_data(int fd)
 	{
 		while (line_map != NULL)
 		{
+			if (ft_strlen(line_map) < 3)
+				put_error("Error\nNot enough objects in a line");
 			buff = ft_strjoin(tmp_buff, line_map);
 			free(line_map);
 			line_map = get_next_line(fd);

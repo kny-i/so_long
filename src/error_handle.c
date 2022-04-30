@@ -33,14 +33,12 @@ int	ft_check_col(t_data *data)
 	while (data->map[y] != NULL)
 	{
 		while (data->map[y][x] != '\0')
-		{
-			if (y != 0 || y != data->height)
-			{
-				if (data->map[y][0] != data->content.wall \
-				|| data->map[y][x - 1] != data->content.wall)
-					put_error("Error\nMap column not close\n");
-			}
 			x++;
+		if (y != 0 || y != data->height)
+		{
+			if (data->map[y][0] != data->content.wall
+			|| data->map[y][x - 1] != data->content.wall)
+				put_error("Error\nMap column not close\n");
 		}
 		y++;
 	}
@@ -60,14 +58,15 @@ int	ft_check_other(t_data *data)
 		{
 			if (data->content.count_e > 1 || data->content.count_p > 1)
 				put_error("Error\nWrong number of player or exit\n");
-			if (data->map[y][x] != data->content.wall && \
-			data->map[y][x] != data->content.player
-				&& data->map[y][x] != data->content.exit && \
-				data->map[y][x] != data->content.collect
-				&& data->map[y][x] != data->content.space)
+			if (data->map[y][x] != data->content.wall
+			&& data->map[y][x] != data->content.player
+			&& data->map[y][x] != data->content.exit
+			&& data->map[y][x] != data->content.collect
+			&& data->map[y][x] != data->content.space)
 				put_error("Error\nUnknown symbol(s) in map\n");
 			x++;
 		}
+		x = 0;
 		y++;
 	}
 	return (1);
