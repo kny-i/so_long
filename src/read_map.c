@@ -1,17 +1,17 @@
 #include "../include/so_long.h"
 
-char *get_map_data(int fd)
+char	*get_map_data(int fd)
 {
-	char 	*line_map;
-	char 	*buff;
-	char 	*tmp_buff;
+	char	*line_map;
+	char	*buff;
+	char	*tmp_buff;
 
 	line_map = get_next_line(fd);
 	buff = strdup("");
 	tmp_buff = buff;
 	if (line_map != NULL)
 	{
-		while(line_map != NULL)
+		while (line_map != NULL)
 		{
 			buff = ft_strjoin(tmp_buff, line_map);
 			free(line_map);
@@ -25,24 +25,10 @@ char *get_map_data(int fd)
 	return (NULL);
 }
 
-void	*ft_free_map(t_data *data)
-{
-	int 	i;
-
-	i = 0;
-	while (data->map[i] != NULL)
-	{
-		free(data->map[i]);
-		i++;
-	}
-	free(data->map);
-	return (NULL);
-}
-
 void	ft_count_contents(t_data *data)
 {
-	int 	i;
-	int 	k;
+	int	i;
+	int	k;
 
 	i = 0;
 	k = 0;
@@ -65,8 +51,8 @@ void	ft_count_contents(t_data *data)
 
 void	ft_count_line(t_data *data)
 {
-	int 	y;
-	int 	x;
+	int	y;
+	int	x;
 
 	x = 0;
 	y = 0;
@@ -85,9 +71,9 @@ char	**parse_map(int fd, t_data *data)
 	data->map = ft_split(get_map_data(fd), '\n');
 	ft_count_contents(data);
 	if (ft_check_format(data) == 0)
-		return(ft_free_map(data));
+		return (ft_free_map(data));
 	else if (ft_check_line(data) == 0)
-		return(ft_free_map(data));
+		return (ft_free_map(data));
 	else if (ft_check_col(data) == 0)
 		return (ft_free_map(data));
 	else if (ft_check_other(data) == 0)
@@ -96,9 +82,9 @@ char	**parse_map(int fd, t_data *data)
 	return (data->map);
 }
 
-char **read_map(char **argv, t_data *data)
+char	**read_map(char **argv, t_data *data)
 {
-	int 	fd;
+	int	fd;
 
 	data->map = NULL;
 	if (ft_strnrcmp(argv[1], ".ber") == 0)

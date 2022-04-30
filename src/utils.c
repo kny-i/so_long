@@ -6,10 +6,10 @@ void	put_error(char *message)
 	exit(EXIT_FAILURE);
 }
 
-int		ft_strnrcmp(char *str, char *cmp)
+int	ft_strnrcmp(char *str, char *cmp)
 {
-	int 	i;
-	int 	k;
+	int	i;
+	int	k;
 
 	i = ft_strlen(str);
 	k = ft_strlen(cmp);
@@ -19,10 +19,8 @@ int		ft_strnrcmp(char *str, char *cmp)
 	{
 		while (k > 0)
 		{
-			if (str[i] != cmp[k]) 
-			{
+			if (str[i] != cmp[k])
 				return (0);
-			}
 			i--;
 			k--;
 		}
@@ -30,6 +28,33 @@ int		ft_strnrcmp(char *str, char *cmp)
 	}
 	else
 		return (0);
-
 }
 
+void	*ft_free_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i] != NULL)
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	return (NULL);
+}
+
+int	key_press(int key_data, t_data *data)
+{
+	if (key_data == 65307)
+		terminate_mlx(data);
+	if (key_data == 'w')
+		render_up(data);
+	if (key_data == 'd')
+		render_right(data);
+	if (key_data == 'a')
+		render_left(data);
+	if (key_data == 's')
+		render_down(data);
+	return (0);
+}
