@@ -38,8 +38,8 @@ int	terminate_mlx(t_data *data)
 
 void	set_img(t_data *data)
 {
-	data->img.height = 80;
-	data->img.width = 80;
+	data->img.height = 30;
+	data->img.width = 30;
 	data->img.floor = "./rsrc/floor_texture.xpm";
 	data->img.wall = "./rsrc/wall_texture.xpm";
 	data->img.collect = "./rsrc/collect.xpm";
