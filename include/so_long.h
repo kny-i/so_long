@@ -4,7 +4,9 @@
 # include "../minilibx-linux/mlx.h"
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include <libc.h>
+
+# define KEY_ESC 65307
+# define MAP_PATH_LEN 5
 
 typedef struct img_s
 {
@@ -63,7 +65,7 @@ char	**parse_map(int fd, t_data *data);
 char	**read_map(char **str, t_data *data);
 char	*get_map_data(int fd);
 void	ft_error(char *message);
-int		ft_strnrcmp(char *str, char *cmp);
+int		ft_strrcmp(char *str, char *cmp);
 int		get_next_line_count(int fd, char **str);
 void	init_render(t_data *data);
 void	render_other(t_data *data);

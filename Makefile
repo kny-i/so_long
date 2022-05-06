@@ -16,6 +16,7 @@ GNL				= 	$(addprefix $(GNL_PATH), $(GNL_FILES))
 GNL_OBJS		= 	$(GNL:.c=.o)
 MLXMAKE			= 	$(MAKE) -C $(MLX_PATH)
 MLXFLAG			= 	-L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
+#MLXFLAG			= 	-lmlx -framework OpenGL -framework AppKit
 LIBFTMAKE		= 	$(MAKE) -C $(LIBFT_PATH)
 
 all:			$(NAME)
@@ -24,7 +25,7 @@ all:			$(NAME)
 $(NAME):		$(MLX_PATH) $(SRCS_OBJS) $(GNL_OBJS)
 				$(MLXMAKE)
 				$(LIBFTMAKE)
-				$(CC) $(CFLAGS) $(SRCS_OBJS) $(GNL_OBJS) $(MLXFLAG) $(MLX_PATH)/libmlx_Darwin.a $(LIBFT_PATH)/libft.a -o $(NAME)
+				$(CC) $(CFLAGS) $(SRCS_OBJS) $(GNL_OBJS) $(MLXFLAG) $(MLX_PATH)libmlx_Darwin.a $(LIBFT_PATH)/libft.a -o $(NAME)
 
 mlx:
 				$(MLXMAKE)
@@ -38,7 +39,6 @@ clean:
 				$(RM) $(GNL_OBJS)
 
 fclean:			clean
-				$(RM) ./so_long
 				$(RM) $(MLX_PATH)/libmlx_Darwin.a
 				$(LIBFTMAKE) fclean
 				$(RM) $(NAME)
